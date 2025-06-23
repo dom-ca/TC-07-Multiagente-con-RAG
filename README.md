@@ -169,5 +169,5 @@ El sistema incluye casos de prueba predefinidos que demuestran:
 - **Tiempo de respuesta**: ~5-10 segundos por consulta
 - **Memoria RAM**: ~2-4 GB (dependiendo del modelo)
 - **Espacio en disco**: ~8 GB (modelo Llama 3.1)
-- 
+
 Este sistema requiere recursos computacionales considerables debido al uso de modelos de lenguaje grandes. Se recomienda ejecutar en equipos con al menos 8GB de RAM.

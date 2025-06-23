@@ -39,7 +39,7 @@ El sistema está compuesto por **3 agentes especializados**:
 - Adapta explicaciones al nivel detectado
 - Mantiene coherencia y motivación en las respuestas
 
-## 🛠️ Tecnologías Utilizadas
+## Tecnologías Utilizadas
 
 **Modelo Base** | Ollama Llama 3.1 | 8B | Generación de texto y razonamiento |
 **Framework LLM** | LangChain | Latest | Integración y manejo de modelos |

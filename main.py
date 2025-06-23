@@ -436,45 +436,52 @@ def main():
             }
         ]
         
-        # Procesar consultas de ejemplo
-        for i, caso in enumerate(consultas_prueba, 1):
-            print(f"\n CASO DE PRUEBA {i}")
-            print("=" * 40)
-            
-            resultado = sistema.procesar_consulta(
-                caso["consulta"], 
-                caso["materia"]
-            )
-            
-            sistema.mostrar_resultado(resultado)
-            
-            if i < len(consultas_prueba):
-                input("\n Presiona Enter para continuar con el siguiente caso...")
-        
         # Modo interactivo
         print(f"\n MODO INTERACTIVO")
         print("=" * 40)
         print("Ahora puedes hacer tus propias consultas.")
         print("Materias disponibles: algebra_lineal, calculo, probabilidad")
         print("Escribe 'salir' para terminar.\n")
+    
         
         while True:
             try:
-                consulta = input("Escribe tu consulta ('exit' para terminar): ").strip()
+                consulta = input("Escribe tu consulta ('exit' para terminar, 'prueba' para ejecutar los ejemplos): ").strip()
                 if consulta.lower() in ['salir', 'exit', 'quit']:
                     break
-                    
+                
                 if not consulta:
                     continue
+
+                if consulta.lower() == 'prueba':
+                    # Procesar consultas de ejemplo
+                    print("\n Ejecutando ejemplos de prueba...")
+                    for i, caso in enumerate(consultas_prueba, 1):
+                        print(f"\n CASO DE PRUEBA {i}")
+                        print("=" * 40)
+                        
+                        resultado = sistema.procesar_consulta(
+                            caso["consulta"], 
+                            caso["materia"]
+                        )
+                        
+                        sistema.mostrar_resultado(resultado)
+                        
+                        if i < len(consultas_prueba):
+                            input("\n Presiona Enter para continuar con el siguiente caso...")
+                else:
+                    # Procesar consulta del usuario
+                    print("\n Procesando tu consulta...")
                     
-                materia = input("Materia (algebra_lineal/calculo/probabilidad): ").strip()
-                if not materia:
-                    materia = "algebra_lineal"
-                
-                print()
-                resultado = sistema.procesar_consulta(consulta, materia)
-                sistema.mostrar_resultado(resultado)
-                print()
+                    materia = input("Materia (algebra_lineal/calculo/probabilidad): ").strip()
+
+                    if not materia:
+                        materia = "algebra_lineal"
+                    
+                    print()
+                    resultado = sistema.procesar_consulta(consulta, materia)
+                    sistema.mostrar_resultado(resultado)
+                    print()
                 
             except KeyboardInterrupt:
                 print("\n\n Saliendo del sistema...")
@@ -485,12 +492,8 @@ def main():
         
     except Exception as e:
         print(f" Error crítico en el sistema: {e}")
-        print("\nVerifica que Ollama esté instalado y ejecutándose:")
-        print("1. Instala Ollama: https://ollama.ai/")
-        print("2. Ejecuta: ollama pull llama3.1")
-        print("3. Instala dependencias: pip install langchain langchain-community langgraph faiss-cpu")
     
-    print("\n ¡Gracias por usar el Sistema Multiagente Educativo!")
+    print("\n Gracias por usar el Sistema!")
 
 
 if __name__ == "__main__":
